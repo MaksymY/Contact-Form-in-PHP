@@ -1,0 +1,26 @@
+body{
+  font-family: 'Lato', sans-serif;
+  margin: 70px 0px;
+  background :#F45B69;
+}
+.divider{
+  width: 100px;
+  height: 2px;
+  background: #F6E8EA;
+  margin: 0 auto;
+}
+.heading{
+  text-align: center;
+  margin-bottom: 60px;
+}
+h2{
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #ffffff;
+}
+#contact-form{
+  font-size: 20px;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+}
