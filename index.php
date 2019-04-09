@@ -1,3 +1,17 @@
+<?php
+
+  $firstname = $name = $email = $phone = $message = "";
+  if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    $firstname = $_POST["firstname"];
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    $message = $_POST["message"];
+  }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,11 +35,12 @@
       </div>
       <div class="row">
         <div class="col-lg-10 col-lg-offset-1">
-          <form id="contact-form" methode="post" action="" role="form">
+          <form id="contact-form" methode="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" role="form">
             <div class="row">
+
               <div class=" col-md-6">
                 <label for="firstname">Prénom<span class="blue">*</span></label>
-                <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Votre prênom"> 
+                <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Votre prénom" value="<?php echo $firstname ?>"> 
                 <p class="comments">Message d'erreur</p>
               </div>
               <div class=" col-md-6">
@@ -60,6 +75,7 @@
               </div>
               <p class="thank-you">Votre message a bien été envoyé. Merci de m'avoir contacté 😁 </p>
             </div>
+
           </form>
         </div>
       </div>
