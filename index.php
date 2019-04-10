@@ -2,11 +2,17 @@
 
   $firstname = $name = $email = $phone = $message = "";
   if (isset($_POST) && !empty($_POST)){
-    $firstname = $_POST["firstname"];
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $phone = $_POST["phone"];
-    $message = $_POST["message"];
+    $firstname = verifyInput($_POST["firstname"]);
+    $name = verifyInput($_POST["name"]);
+    $email = verifyInput($_POST["email"]);
+    $phone = verifyInput($_POST["phone"]);
+    $message = verifyInput($_POST["message"]);
+  }
+  function verifyInput($var){
+    $var = trim($var);
+    $var = stripslashes($var);
+    $var = htmlspecialchars($var);
+    return $var;
   }
 
 ?>
@@ -35,7 +41,7 @@
       </div>
       <div class="row">
         <div class="col-lg-10 col-lg-offset-1">
-          <form id="contact-form" method="post" action="index.php" role="form">
+          <form id="contact-form" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" role="form">
             <div class="row">
 
               <div class=" col-md-6">
@@ -45,23 +51,23 @@
               </div>
               <div class=" col-md-6">
                   <label for="name">Nom<span class="blue">*</span></label>
-                  <input type="text" id="name" name="name" class="form-control" placeholder="Votre nom"> 
+                  <input type="text" id="name" name="name" class="form-control" placeholder="Votre nom  "value="<?php echo $name ?>"> 
                   <p class="comments">Message d'erreur</p>
               </div>
               <div class=" col-md-6">
                 <label for="email">Email<span class="blue">*</span></label>
-                <input type="email" id="email" name="email" class="form-control" placeholder="Votre email"> 
+                <input type="email" id="email" name="email" class="form-control" placeholder="Votre email" value="<?php echo $email ?>"> 
                 <p class="comments">Message d'erreur</p>
               </div>
               <div class=" col-md-6">
                 <label for="phone">Téléphone<span class="blue">*</span></label>
-                <input type="tel" id="phone" name="phone" class="form-control" placeholder="Votre Téléphone"> 
+                <input type="tel" id="phone" name="phone" class="form-control" placeholder="Votre Téléphone" value="<?php echo $phone ?>"> 
                 <p class="comments">Message d'erreur</p>
               </div>
 
               <div class=" col-md-12">
                 <label for="message">Message<span class="blue">*</span></label>
-                <textarea name="message" id="message" class="form-control" placeholder="Votre message" rows="4"></textarea>
+                <textarea name="message" id="message" class="form-control" placeholder="Votre message" rows="4" value="<?php echo $message ?>"></textarea>
                 <p class="comments">Message d'erreur</p>
               </div>
               <div class="col-md-12">
