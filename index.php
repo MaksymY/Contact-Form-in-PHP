@@ -1,7 +1,7 @@
 <?php
 
   $firstname = $name = $email = $phone = $message = "";
-  if ($_SERVER["REQUEST_METHOD"] == "POST"){
+  if (isset($_POST) && !empty($_POST)){
     $firstname = $_POST["firstname"];
     $name = $_POST["name"];
     $email = $_POST["email"];
@@ -35,7 +35,7 @@
       </div>
       <div class="row">
         <div class="col-lg-10 col-lg-offset-1">
-          <form id="contact-form" methode="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" role="form">
+          <form id="contact-form" method="post" action="index.php" role="form">
             <div class="row">
 
               <div class=" col-md-6">
