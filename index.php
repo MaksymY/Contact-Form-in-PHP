@@ -16,11 +16,11 @@
     if(empty($name)){
       $nameError = "Je veux connaitre votre nom !";
     }
-    if(empty($email)){
+    if(!isEmail($email) || empty($email)){
       $emailError = "Je veux connaitre votre email !";
     }
-    if(empty($phone)){
-      $phoneError = "Je veux connaitre votre numéro de téléphone !";
+    if(!isPhone($phone) || empty($phone)){
+      $phoneError = "veillez saisiz un numéro de téléphone!";
     }
     if(empty($message)){
       $messageError = "N'oubliez pas d'écrire se que vous voulez me dire !";
@@ -28,7 +28,14 @@
 
   }
 
+  function isPhone($var){
+    return preg_match("/^[0-9 .]*$/", $var);
+  }
 
+
+  function isEmail($var){
+    return filter_var($var, FILTER_VALIDATE_EMAIL);
+  }
 
   function verifyInput($var){
     $var = trim($var);
@@ -68,28 +75,28 @@
 
               <div class=" col-md-6">
                 <label for="firstname">Prénom<span class="blue">*</span></label>
-                <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Votre prénom" value="<?php echo $firstname ?>"> 
+                <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Votre prénom" value="<?php echo $firstname; ?>"> 
                 <p class="comments"><?php echo $firstnameError; ?></p>
               </div>
               <div class=" col-md-6">
                   <label for="name">Nom<span class="blue">*</span></label>
-                  <input type="text" id="name" name="name" class="form-control" placeholder="Votre nom  "value="<?php echo $name ?>"> 
+                  <input type="text" id="name" name="name" class="form-control" placeholder="Votre nom  "value="<?php echo $name; ?>"> 
                   <p class="comments"><?php echo $nameError; ?></p>
               </div>
               <div class=" col-md-6">
                 <label for="email">Email<span class="blue">*</span></label>
-                <input type="email" id="email" name="email" class="form-control" placeholder="Votre email" value="<?php echo $email ?>"> 
+                <input type="email" id="email" name="email" class="form-control" placeholder="Votre email" value="<?php echo $email; ?>"> 
                 <p class="comments"><?php echo $emailError; ?></p>
               </div>
               <div class=" col-md-6">
                 <label for="phone">Téléphone<span class="blue">*</span></label>
-                <input type="tel" id="phone" name="phone" class="form-control" placeholder="Votre Téléphone" value="<?php echo $phone ?>"> 
+                <input type="tel" id="phone" name="phone" class="form-control" placeholder="Votre Téléphone" value="<?php echo $phone; ?>"> 
                 <p class="comments"><?php echo $phoneError; ?></p>
               </div>
 
               <div class=" col-md-12">
                 <label for="message">Message<span class="blue">*</span></label>
-                <textarea name="message" id="message" class="form-control" placeholder="Votre message" rows="4" value="<?php echo $message ?>"></textarea>
+                <textarea name="message" id="message" class="form-control" placeholder="Votre message" rows="4"><?php echo $message; ?></textarea>
                 <p class="comments"><?php echo $messageError; ?></p>
               </div>
               <div class="col-md-12">
